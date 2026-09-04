@@ -1,6 +1,7 @@
 import requests
 import csv
 import os
+from dotenv import load_dotenv
 from datetime import datetime
 
 # URLs
@@ -9,6 +10,7 @@ TARGET_URL = "https://autogestion.frd.utn.edu.ar/estadoAcademico.asp?id=14833" #
 ARCHIVO_CSV = "tiempos_servidor.csv"
 LIMITE_MEDICIONES = 4
 
+load_dotenv()
 USUARIO = os.environ.get("APP_USER")
 PASSWORD = os.environ.get("APP_PASS")
 
