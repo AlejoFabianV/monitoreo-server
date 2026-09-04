@@ -1,5 +1,5 @@
 
-name: Monitoreo cada 3 horas
+name: Monitoreo cada 2 horas
 
 on:
   schedule:
