@@ -35,5 +35,16 @@ jobs:
           git config --global user.name "Monitor Bot"
           git config --global user.email "bot@github.com"
           git add tiempos_servidor.csv
-          # Solo hace commit si hubo cambios en el archivo
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Nueva medición guardada" && git push)
+          
+          # Si hay datos nuevos en el CSV, los preparamos para subir
+          if ! git diff --staged --quiet; then
+            git commit -m "Nueva medición guardada"
+            
+            # Sincronizamos con el repositorio antes de subir para evitar choques
+            git pull --rebase origin main
+            
+            # Subimos el archivo final
+            git push
+          else
+            echo "No hay mediciones nuevas para guardar."
+          fi
