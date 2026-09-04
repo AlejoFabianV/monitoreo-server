@@ -8,7 +8,7 @@ from datetime import datetime
 LOGIN_URL = "https://autogestion.frd.utn.edu.ar/loginAlumno.asp?refrescar" # URL donde se procesa el login
 TARGET_URL = "https://autogestion.frd.utn.edu.ar/estadoAcademico.asp?id=14833" # La URL protegida a medir
 ARCHIVO_CSV = "tiempos_servidor.csv"
-LIMITE_MEDICIONES = 4
+LIMITE_MEDICIONES = 39
 
 load_dotenv()
 USUARIO = os.environ.get("APP_USER")
@@ -63,7 +63,7 @@ def ejecutar_medicion():
         with open(ARCHIVO_CSV, "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerow([ahora, TARGET_URL, estado, tiempo_ms, observacion])
-            print(f"Medición {total_actual + 1}/5 registrada: {tiempo_ms} ms")
+            print(f"Medición {total_actual + 1}/40 registrada: {tiempo_ms} ms")
     else:
         print(f"limite de medicones alcanzado")
 
